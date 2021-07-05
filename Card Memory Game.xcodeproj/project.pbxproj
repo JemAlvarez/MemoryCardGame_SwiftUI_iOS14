@@ -15,6 +15,7 @@
 		CAF19E0D269292C8006028C7 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF19E0C269292C8006028C7 /* MainView.swift */; };
 		CAF19E1126929362006028C7 /* TabViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF19E1026929362006028C7 /* TabViewModel.swift */; };
 		CAF19E1326929808006028C7 /* TabBarIconViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF19E1226929808006028C7 /* TabBarIconViewModel.swift */; };
+		CAF19E152692A2BB006028C7 /* FloatingButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF19E142692A2BB006028C7 /* FloatingButtonView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 		CAF19E0C269292C8006028C7 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		CAF19E1026929362006028C7 /* TabViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabViewModel.swift; sourceTree = "<group>"; };
 		CAF19E1226929808006028C7 /* TabBarIconViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarIconViewModel.swift; sourceTree = "<group>"; };
+		CAF19E142692A2BB006028C7 /* FloatingButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatingButtonView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,6 +88,7 @@
 				CAA693FF2691642300E6E0A6 /* TabBarView.swift */,
 				CAF19E0726927B20006028C7 /* TabBarIconView.swift */,
 				CAF19E0C269292C8006028C7 /* MainView.swift */,
+				CAF19E142692A2BB006028C7 /* FloatingButtonView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -185,6 +188,7 @@
 				CAA694002691642300E6E0A6 /* TabBarView.swift in Sources */,
 				CAA693F02691632500E6E0A6 /* Card_Memory_GameApp.swift in Sources */,
 				CAF19E0D269292C8006028C7 /* MainView.swift in Sources */,
+				CAF19E152692A2BB006028C7 /* FloatingButtonView.swift in Sources */,
 				CAF19E0826927B20006028C7 /* TabBarIconView.swift in Sources */,
 				CAF19E1326929808006028C7 /* TabBarIconViewModel.swift in Sources */,
 				CAF19E1126929362006028C7 /* TabViewModel.swift in Sources */,

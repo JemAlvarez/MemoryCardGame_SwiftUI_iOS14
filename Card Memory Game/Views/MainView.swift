@@ -43,6 +43,10 @@ struct MainView: View {
                 .offset(x: -(UIScreen.main.bounds.width * CGFloat(tabViewModel.selectedTab)))
                 .animation(.easeIn)
                 
+                FloatingButtonView()
+                    .frame(maxWidth: .infinity, alignment: .trailing)
+                    .padding()
+                
                 TabBarView()
             }
         }
