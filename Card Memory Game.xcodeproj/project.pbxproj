@@ -14,6 +14,7 @@
 		CADEFB522692D007002DB680 /* HistoryCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CADEFB512692D007002DB680 /* HistoryCardView.swift */; };
 		CADEFB542692D510002DB680 /* AllHistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CADEFB532692D510002DB680 /* AllHistoryView.swift */; };
 		CADEFB5A2692DE1E002DB680 /* GameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CADEFB592692DE1E002DB680 /* GameView.swift */; };
+		CADEFB5D26935A48002DB680 /* GameCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CADEFB5C26935A48002DB680 /* GameCardView.swift */; };
 		CAF19E0826927B20006028C7 /* TabBarIconView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF19E0726927B20006028C7 /* TabBarIconView.swift */; };
 		CAF19E0D269292C8006028C7 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF19E0C269292C8006028C7 /* MainView.swift */; };
 		CAF19E1126929362006028C7 /* TabViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF19E1026929362006028C7 /* TabViewModel.swift */; };
@@ -33,6 +34,7 @@
 		CADEFB512692D007002DB680 /* HistoryCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryCardView.swift; sourceTree = "<group>"; };
 		CADEFB532692D510002DB680 /* AllHistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllHistoryView.swift; sourceTree = "<group>"; };
 		CADEFB592692DE1E002DB680 /* GameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameView.swift; sourceTree = "<group>"; };
+		CADEFB5C26935A48002DB680 /* GameCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameCardView.swift; sourceTree = "<group>"; };
 		CAF19E0726927B20006028C7 /* TabBarIconView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarIconView.swift; sourceTree = "<group>"; };
 		CAF19E0C269292C8006028C7 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		CAF19E1026929362006028C7 /* TabViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabViewModel.swift; sourceTree = "<group>"; };
@@ -95,11 +97,11 @@
 		CAA693FE2691641200E6E0A6 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				CADEFB5B26935A3A002DB680 /* Game */,
 				CADEFB572692DC93002DB680 /* History */,
 				CADEFB582692DCA8002DB680 /* TabBar */,
 				CAF19E0C269292C8006028C7 /* MainView.swift */,
 				CAF19E162692C7EE006028C7 /* AllCardsView.swift */,
-				CADEFB592692DE1E002DB680 /* GameView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -121,6 +123,15 @@
 				CAF19E0726927B20006028C7 /* TabBarIconView.swift */,
 			);
 			path = TabBar;
+			sourceTree = "<group>";
+		};
+		CADEFB5B26935A3A002DB680 /* Game */ = {
+			isa = PBXGroup;
+			children = (
+				CADEFB592692DE1E002DB680 /* GameView.swift */,
+				CADEFB5C26935A48002DB680 /* GameCardView.swift */,
+			);
+			path = Game;
 			sourceTree = "<group>";
 		};
 		CAF19E092692926F006028C7 /* Shared */ = {
@@ -218,6 +229,7 @@
 			files = (
 				CAA694002691642300E6E0A6 /* TabBarView.swift in Sources */,
 				CAA693F02691632500E6E0A6 /* Card_Memory_GameApp.swift in Sources */,
+				CADEFB5D26935A48002DB680 /* GameCardView.swift in Sources */,
 				CADEFB522692D007002DB680 /* HistoryCardView.swift in Sources */,
 				CAF19E0D269292C8006028C7 /* MainView.swift in Sources */,
 				CAF19E152692A2BB006028C7 /* FloatingButtonView.swift in Sources */,
