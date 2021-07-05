@@ -14,3 +14,11 @@ struct Constants {
         "71", "72", "73", "74", "75", "76", "77", "78"
     ]
 }
+
+extension Date {
+    func formatDate(date: Date, stringFormat: String) -> String {
+        let formatter = DateFormatter()
+        formatter.dateFormat = stringFormat
+        return formatter.string(from: date)
+    }
+}

@@ -18,7 +18,7 @@ struct AllHistoryView: View {
                     ScrollView (showsIndicators: false) {
                         VStack(spacing: 20) {
                             ForEach(0..<20, id: \.self) { _ in
-                                HistoryCardView()
+                                HistoryCardView(history: HistoryModel(date: Date(), difficulty: 3, time: 30, lives: 8, moves: 15))
                             }
                         }
                     }

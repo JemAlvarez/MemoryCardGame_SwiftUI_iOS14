@@ -3,17 +3,19 @@
 import SwiftUI
 
 struct HistoryCardView: View {
+    @State var history: HistoryModel
+    
     var body: some View {
         VStack {
             // date
             HStack {
                 Label("Date:", systemImage: "calendar")
-                Text("July 4, 2021 - 10:35 PM")
+                Text(history.date.formatDate(date: history.date, stringFormat: "MMMM d, yyyy - h:mm a"))
                     .font(.system(size: 14))
                 
                 Spacer()
                 
-                Image(systemName: "exclamationmark.3")
+                Image(systemName: "exclamationmark.\(history.difficulty)")
             }
             
             Divider()
@@ -21,23 +23,28 @@ struct HistoryCardView: View {
             
             HStack {
                 Label("Time:", systemImage: "clock")
-                Text("00:53 s")
+                Text("\((history.time % 3600) / 60):\((history.time % 3600) % 60)")
                 Spacer()
             }
             
             HStack {
                 Label("Lives:", systemImage: "heart.fill")
-                HStack {
-                    Image(systemName: "heart.fill")
-                    Image(systemName: "heart.fill")
-                    Image(systemName: "heart")
+                HStack (spacing: 0) {
+                    ForEach(0..<10) { i in
+                        if i < history.lives {
+                            Image(systemName: "heart.fill")
+                        } else {
+                            Image(systemName: "heart")
+                        }
+                    }
                 }
+                .foregroundColor(Color("greenDark"))
                 Spacer()
             }
             
             HStack {
                 Label("Moves:", systemImage: "arrow.counterclockwise")
-                Text("8")
+                Text("\(history.moves)")
                 Spacer()
             }
         }
@@ -50,6 +57,6 @@ struct HistoryCardView: View {
 
 struct HistoryCardView_Previews: PreviewProvider {
     static var previews: some View {
-        HistoryCardView()
+        HistoryCardView(history: HistoryModel(date: Date(), difficulty: 3, time: 30, lives: 4, moves: 17))
     }
 }
