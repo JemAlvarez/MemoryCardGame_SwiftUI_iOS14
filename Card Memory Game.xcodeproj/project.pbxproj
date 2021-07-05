@@ -16,6 +16,8 @@
 		CAF19E1126929362006028C7 /* TabViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF19E1026929362006028C7 /* TabViewModel.swift */; };
 		CAF19E1326929808006028C7 /* TabBarIconViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF19E1226929808006028C7 /* TabBarIconViewModel.swift */; };
 		CAF19E152692A2BB006028C7 /* FloatingButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF19E142692A2BB006028C7 /* FloatingButtonView.swift */; };
+		CAF19E172692C7EE006028C7 /* AllCardsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF19E162692C7EE006028C7 /* AllCardsView.swift */; };
+		CAF19E192692C832006028C7 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF19E182692C832006028C7 /* Constants.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +32,8 @@
 		CAF19E1026929362006028C7 /* TabViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabViewModel.swift; sourceTree = "<group>"; };
 		CAF19E1226929808006028C7 /* TabBarIconViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarIconViewModel.swift; sourceTree = "<group>"; };
 		CAF19E142692A2BB006028C7 /* FloatingButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatingButtonView.swift; sourceTree = "<group>"; };
+		CAF19E162692C7EE006028C7 /* AllCardsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllCardsView.swift; sourceTree = "<group>"; };
+		CAF19E182692C832006028C7 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -89,6 +93,7 @@
 				CAF19E0726927B20006028C7 /* TabBarIconView.swift */,
 				CAF19E0C269292C8006028C7 /* MainView.swift */,
 				CAF19E142692A2BB006028C7 /* FloatingButtonView.swift */,
+				CAF19E162692C7EE006028C7 /* AllCardsView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -96,6 +101,7 @@
 		CAF19E092692926F006028C7 /* Shared */ = {
 			isa = PBXGroup;
 			children = (
+				CAF19E182692C832006028C7 /* Constants.swift */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -191,7 +197,9 @@
 				CAF19E152692A2BB006028C7 /* FloatingButtonView.swift in Sources */,
 				CAF19E0826927B20006028C7 /* TabBarIconView.swift in Sources */,
 				CAF19E1326929808006028C7 /* TabBarIconViewModel.swift in Sources */,
+				CAF19E172692C7EE006028C7 /* AllCardsView.swift in Sources */,
 				CAF19E1126929362006028C7 /* TabViewModel.swift in Sources */,
+				CAF19E192692C832006028C7 /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

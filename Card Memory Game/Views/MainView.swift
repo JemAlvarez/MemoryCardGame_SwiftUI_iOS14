@@ -6,7 +6,7 @@ struct MainView: View {
     @StateObject var tabViewModel = TabViewModel()
     
     var body: some View {
-        ZStack {
+        ZStack (alignment: .bottomTrailing) {
             Color("black").edgesIgnoringSafeArea(.bottom)
                 .frame(height: 50)
                 .position(x: UIScreen.main.bounds.width / 2,y: UIScreen.main.bounds.height - 100)
@@ -26,11 +26,8 @@ struct MainView: View {
                     .frame(maxHeight: .infinity)
                     .offset(x: UIScreen.main.bounds.width)
                     
-                    VStack {
-                        Text("3")
-                    }
+                    AllCardsView()
                     .frame(width: UIScreen.main.bounds.width)
-                    .frame(maxHeight: .infinity)
                     .offset(x: UIScreen.main.bounds.width * 2)
                     
                     VStack {
@@ -43,12 +40,12 @@ struct MainView: View {
                 .offset(x: -(UIScreen.main.bounds.width * CGFloat(tabViewModel.selectedTab)))
                 .animation(.easeIn)
                 
-                FloatingButtonView()
-                    .frame(maxWidth: .infinity, alignment: .trailing)
-                    .padding()
-                
                 TabBarView()
             }
+            
+            FloatingButtonView()
+                .offset(y: -80)
+                .padding()
         }
         .environmentObject(tabViewModel)
     }
