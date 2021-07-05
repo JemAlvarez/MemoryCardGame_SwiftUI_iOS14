@@ -3,10 +3,10 @@
 import SwiftUI
 
 struct TabBarView: View {
-    let tabsIcons = ["house", "person", "pin", "car"]
-    let tabsNames = ["Home", "Person", "Map", "Car"]
-    @State var position: [CGFloat] = [0, 0, 0, 0]
-    @State var selectedTab = 0
+    @EnvironmentObject var tabViewModel: TabViewModel
+    
+    @ObservedObject var viewModel = TabViewModel()
+    @State var positions: [CGFloat] = [0, 0, 0, 0]
     
     var body: some View {
         GeometryReader { bounds in
@@ -14,11 +14,11 @@ struct TabBarView: View {
                 HStack {
                     Spacer()
                     
-                    ForEach(0..<tabsNames.count, id: \.self) { i in
+                    ForEach(0..<viewModel.tabsNames.count, id: \.self) { i in
                         GeometryReader { tab in
-                            TabBarIconView(selectedTab: $selectedTab, tag: i, text: tabsNames[i], icon: tabsIcons[i])
+                            TabBarIconView(selectedTab: $tabViewModel.selectedTab, tag: i, text: viewModel.tabsNames[i], icon: viewModel.tabsIcons[i])
                                 .onAppear {
-                                    position[i] = tab.frame(in: .global).midX
+                                    positions[i] = tab.frame(in: .global).midX
                                 }
                         }
                         
@@ -31,7 +31,7 @@ struct TabBarView: View {
                 Circle()
                     .frame(width: 10, height: 10)
                     .foregroundColor(.red)
-                    .position(x: position[selectedTab], y: bounds.frame(in: .local).midY + 13)
+                    .position(x: positions[tabViewModel.selectedTab], y: bounds.frame(in: .local).midY + 13)
             }
         }
         .frame(height: 80)

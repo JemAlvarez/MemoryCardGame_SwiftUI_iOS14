@@ -2,7 +2,9 @@
 
 import SwiftUI
 
-struct ContentView: View {
+struct MainView: View {
+    @StateObject var tabViewModel = TabViewModel()
+    
     var body: some View {
         ZStack {
             Color.blue.edgesIgnoringSafeArea(.bottom)
@@ -14,11 +16,12 @@ struct ContentView: View {
                 TabBarView()
             }
         }
+        .environmentObject(tabViewModel)
     }
 }
 
-struct ContentView_Previews: PreviewProvider {
+struct MainView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+        MainView()
     }
 }

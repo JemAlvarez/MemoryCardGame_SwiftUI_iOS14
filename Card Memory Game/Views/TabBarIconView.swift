@@ -8,9 +8,10 @@ struct TabBarIconView: View {
     let text: String
     let icon: String
     
-    let animationDuration = 0.2
     @State var animating = false
     @State var angle: Double = 0
+    
+    @ObservedObject var viewModel = TabBarIconViewModel()
     
     var body: some View {
         VStack {
@@ -26,9 +27,9 @@ struct TabBarIconView: View {
         .onTapGesture {
             withAnimation {
                 if selectedTab > tag {
-                    angle = -45
+                    angle = -25
                 } else {
-                    angle = 45
+                    angle = 25
                 }
                 
                 selectedTab = tag
@@ -36,12 +37,12 @@ struct TabBarIconView: View {
         }
         .onChange(of: selectedTab) { newTab in
             if newTab == tag {
-                withAnimation (Animation.easeIn(duration: animationDuration)) {
+                withAnimation (Animation.easeIn(duration: viewModel.animationDuration)) {
                     animating = true
                 }
                 
-                DispatchQueue.main.asyncAfter(deadline: .now() + animationDuration) {
-                    withAnimation (Animation.easeIn(duration: animationDuration)) {
+                DispatchQueue.main.asyncAfter(deadline: .now() + viewModel.animationDuration) {
+                    withAnimation (Animation.easeIn(duration: viewModel.animationDuration)) {
                         animating = false
                     }
                 }
