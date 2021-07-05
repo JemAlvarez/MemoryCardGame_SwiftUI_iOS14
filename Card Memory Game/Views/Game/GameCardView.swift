@@ -3,54 +3,37 @@
 import SwiftUI
 
 struct GameCardView: View {
-    let image: String
-    let animationDuration = 0.5
-    @State var flipped = false
-    @State var showingFront = false
+    @State var card: GameCardModel
+    @Binding var isFlipped: Bool
     
     var body: some View {
         VStack {
-            if flipped { // front
-                if showingFront {
-                    Image(image)
-                        .resizable()
-                        .scaledToFit()
-                        .padding()
-                        .rotation3DEffect(
-                            Angle(degrees: -180),
-                            axis: (x: 0.0, y: 1.0, z: 0.0)
-                        )
-                }
+            if isFlipped { // front
+                Image(card.image)
+                    .resizable()
+                    .scaledToFit()
+                    .padding()
+                    .rotation3DEffect(
+                        Angle(degrees: -180),
+                        axis: (x: 0.0, y: 1.0, z: 0.0)
+                    )
             } else { // back
                 Spacer()
             }
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
-        .background(flipped ? Color("greenLight") : Color("gray"))
-        .cornerRadius(20)
-        .padding(30)
-        .background(flipped ? Color.black.opacity(0) : Color("greenDark"))
+        .background(isFlipped ? Color("greenLight") : Color("gray"))
         .cornerRadius(20)
         .rotation3DEffect(
-            Angle(degrees: flipped ? 180 : 0),
+            Angle(degrees: isFlipped ? 180 : 0),
             axis: (x: 0.0, y: 1.0, z: 0.0)
         )
-        .onTapGesture {
-            withAnimation(.easeIn(duration: animationDuration)) {
-                flipped.toggle()
-            }
-            
-            DispatchQueue.main.asyncAfter(deadline: .now() + animationDuration / 2) {
-                withAnimation {
-                    showingFront.toggle()
-                }
-            }
-        }
+        .shadow(color: Color("greenDark"), radius: 3, x: 1, y: 1)
     }
 }
 
 struct GameCardView_Previews: PreviewProvider {
     static var previews: some View {
-        GameCardView(image: "01")
+        GameCardView(card: GameCardModel(image: "01", flipped: false), isFlipped: .constant(false))
     }
 }

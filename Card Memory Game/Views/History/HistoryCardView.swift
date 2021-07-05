@@ -28,9 +28,9 @@ struct HistoryCardView: View {
             HStack {
                 Label("Lives:", systemImage: "heart.fill")
                 HStack {
-                    Image(systemName: "star.fill")
-                    Image(systemName: "star.fill")
-                    Image(systemName: "star")
+                    Image(systemName: "heart.fill")
+                    Image(systemName: "heart.fill")
+                    Image(systemName: "heart")
                 }
                 Spacer()
             }
