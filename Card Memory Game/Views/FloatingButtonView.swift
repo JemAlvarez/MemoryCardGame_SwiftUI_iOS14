@@ -7,30 +7,30 @@ struct FloatingButtonView: View {
     
     var body: some View {
         ZStack {
-            Image(systemName: "play.fill")
+            Image(systemName: "exclamationmark")
                 .font(.title)
-                .padding(20)
+                .frame(width: 70, height: 70)
                 .background(Color.yellow)
                 .clipShape(Circle())
                 .offset(x: showing ? -80 : 0)
             
-            Image(systemName: "play.fill")
+            Image(systemName: "exclamationmark.3")
                 .font(.title)
-                .padding(20)
+                .frame(width: 70, height: 70)
                 .background(Color.green)
                 .clipShape(Circle())
                 .offset(y: showing ? -80 : 0)
             
-            Image(systemName: "play.fill")
+            Image(systemName: "exclamationmark.2")
                 .font(.title)
-                .padding(20)
+                .frame(width: 70, height: 70)
                 .background(Color.blue)
                 .clipShape(Circle())
                 .offset(x: showing ? -80 : 0, y: showing ? -80 : 0)
             
             Image(systemName: "play.fill")
                 .font(.title)
-                .padding(20)
+                .frame(width: 70, height: 70)
                 .background(Color.red)
                 .clipShape(Circle())
                 .onTapGesture {
