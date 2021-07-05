@@ -25,14 +25,13 @@ struct TabBarView: View {
                         Spacer()
                     }
                 }
-                .frame(height: 80)
-                .background(Color.blue)
                 
                 Circle()
                     .frame(width: 10, height: 10)
-                    .foregroundColor(.red)
+                    .foregroundColor(Color("greenDark"))
                     .position(x: positions[tabViewModel.selectedTab], y: bounds.frame(in: .local).midY + 13)
             }
+            .background(Color("black"))
         }
         .frame(height: 80)
     }
