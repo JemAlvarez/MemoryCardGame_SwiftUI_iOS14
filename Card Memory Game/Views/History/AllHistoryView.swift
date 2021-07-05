@@ -29,6 +29,7 @@ struct AllHistoryView: View {
             .navigationTitle("")
             .navigationBarHidden(true)
         }
+        .navigationViewStyle(StackNavigationViewStyle())
     }
 }
 

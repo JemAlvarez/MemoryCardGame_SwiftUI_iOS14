@@ -3,7 +3,16 @@
 import SwiftUI
 
 struct FloatingButtonView: View {
-    @State var showing = false
+    @State var showingButtons = false
+    @State var showingGameSheet = false {
+        didSet {
+            if showingGameSheet == true {
+                withAnimation {
+                    showingButtons = false
+                }
+            }
+        }
+    }
     
     var body: some View {
         ZStack {
@@ -12,21 +21,30 @@ struct FloatingButtonView: View {
                 .frame(width: 70, height: 70)
                 .background(Color("greenDark"))
                 .clipShape(Circle())
-                .offset(x: showing ? -80 : 0)
+                .offset(x: showingButtons ? -80 : 0)
+                .onTapGesture {
+                    showingGameSheet.toggle()
+                }
             
             Image(systemName: "exclamationmark.3")
                 .font(.system(size: 30))
                 .frame(width: 70, height: 70)
                 .background(Color("greenDark"))
                 .clipShape(Circle())
-                .offset(y: showing ? -80 : 0)
+                .offset(y: showingButtons ? -80 : 0)
+                .onTapGesture {
+                    showingGameSheet.toggle()
+                }
             
             Image(systemName: "exclamationmark.2")
                 .font(.system(size: 30))
                 .frame(width: 70, height: 70)
                 .background(Color("greenDark"))
                 .clipShape(Circle())
-                .offset(x: showing ? -80 : 0, y: showing ? -80 : 0)
+                .offset(x: showingButtons ? -80 : 0, y: showingButtons ? -80 : 0)
+                .onTapGesture {
+                    showingGameSheet.toggle()
+                }
             
             Image(systemName: "play.fill")
                 .font(.system(size: 30))
@@ -35,10 +53,11 @@ struct FloatingButtonView: View {
                 .clipShape(Circle())
                 .onTapGesture {
                     withAnimation {
-                        showing.toggle()
+                        showingButtons.toggle()
                     }
                 }
         }
+        .fullScreenCover(isPresented: $showingGameSheet) { GameView() }
     }
 }
 
