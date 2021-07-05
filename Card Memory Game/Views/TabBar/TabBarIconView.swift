@@ -16,7 +16,7 @@ struct TabBarIconView: View {
     
     var body: some View {
         VStack {
-            Image(systemName: selectedTab == tag ? (tag != 1 && tag != 2 ? icon + ".fill" : icon) : icon)
+            Image(systemName: icon)
                 .font(.system(size: 20))
                 .rotationEffect(Angle(degrees: animating ? angle : 0))
                 .offset(y: animating ? -10 : 0)

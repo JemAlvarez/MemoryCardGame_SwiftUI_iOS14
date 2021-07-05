@@ -3,8 +3,8 @@
 import SwiftUI
 
 class TabViewModel: ObservableObject {
-    let tabsIcons = ["house", "clock.arrow.circlepath", "photo.on.rectangle.angled", "gearshape"]
-    let tabsNames = ["Home", "History", "Cards", "Settings"]
+    let tabsIcons = ["photo.on.rectangle.angled", "clock.arrow.circlepath"]
+    let tabsNames = ["Cards", "History"]
     
     @Published var selectedTab = 0
 }
