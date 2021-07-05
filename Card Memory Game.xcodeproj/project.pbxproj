@@ -16,6 +16,9 @@
 		CADEFB5A2692DE1E002DB680 /* GameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CADEFB592692DE1E002DB680 /* GameView.swift */; };
 		CADEFB5D26935A48002DB680 /* GameCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CADEFB5C26935A48002DB680 /* GameCardView.swift */; };
 		CADEFB5F26936DF3002DB680 /* GameCardModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CADEFB5E26936DF3002DB680 /* GameCardModel.swift */; };
+		CADEFB6126938B9D002DB680 /* AudioController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CADEFB6026938B9C002DB680 /* AudioController.swift */; };
+		CADEFB6626938F02002DB680 /* cursor_style_1.wav in Resources */ = {isa = PBXBuildFile; fileRef = CADEFB6526938F02002DB680 /* cursor_style_1.wav */; };
+		CADEFB682693C7D6002DB680 /* HistoryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CADEFB672693C7D6002DB680 /* HistoryModel.swift */; };
 		CAF19E0826927B20006028C7 /* TabBarIconView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF19E0726927B20006028C7 /* TabBarIconView.swift */; };
 		CAF19E0D269292C8006028C7 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF19E0C269292C8006028C7 /* MainView.swift */; };
 		CAF19E1126929362006028C7 /* TabViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF19E1026929362006028C7 /* TabViewModel.swift */; };
@@ -37,6 +40,9 @@
 		CADEFB592692DE1E002DB680 /* GameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameView.swift; sourceTree = "<group>"; };
 		CADEFB5C26935A48002DB680 /* GameCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameCardView.swift; sourceTree = "<group>"; };
 		CADEFB5E26936DF3002DB680 /* GameCardModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameCardModel.swift; sourceTree = "<group>"; };
+		CADEFB6026938B9C002DB680 /* AudioController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioController.swift; sourceTree = "<group>"; };
+		CADEFB6526938F02002DB680 /* cursor_style_1.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = cursor_style_1.wav; sourceTree = "<group>"; };
+		CADEFB672693C7D6002DB680 /* HistoryModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryModel.swift; sourceTree = "<group>"; };
 		CAF19E0726927B20006028C7 /* TabBarIconView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarIconView.swift; sourceTree = "<group>"; };
 		CAF19E0C269292C8006028C7 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		CAF19E1026929362006028C7 /* TabViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabViewModel.swift; sourceTree = "<group>"; };
@@ -76,6 +82,7 @@
 		CAA693EE2691632500E6E0A6 /* Card Memory Game */ = {
 			isa = PBXGroup;
 			children = (
+				CADEFB6426938EA0002DB680 /* Sounds */,
 				CAF19E0B2692927B006028C7 /* ViewModel */,
 				CAF19E0A26929276006028C7 /* Model */,
 				CAF19E092692926F006028C7 /* Shared */,
@@ -136,6 +143,14 @@
 			path = Game;
 			sourceTree = "<group>";
 		};
+		CADEFB6426938EA0002DB680 /* Sounds */ = {
+			isa = PBXGroup;
+			children = (
+				CADEFB6526938F02002DB680 /* cursor_style_1.wav */,
+			);
+			path = Sounds;
+			sourceTree = "<group>";
+		};
 		CAF19E092692926F006028C7 /* Shared */ = {
 			isa = PBXGroup;
 			children = (
@@ -148,6 +163,8 @@
 			isa = PBXGroup;
 			children = (
 				CADEFB5E26936DF3002DB680 /* GameCardModel.swift */,
+				CADEFB6026938B9C002DB680 /* AudioController.swift */,
+				CADEFB672693C7D6002DB680 /* HistoryModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -218,6 +235,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CADEFB6626938F02002DB680 /* cursor_style_1.wav in Resources */,
 				CAA693F72691632500E6E0A6 /* Preview Assets.xcassets in Resources */,
 				CAA693F42691632500E6E0A6 /* Assets.xcassets in Resources */,
 			);
@@ -230,6 +248,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CADEFB682693C7D6002DB680 /* HistoryModel.swift in Sources */,
 				CAA694002691642300E6E0A6 /* TabBarView.swift in Sources */,
 				CAA693F02691632500E6E0A6 /* Card_Memory_GameApp.swift in Sources */,
 				CADEFB5D26935A48002DB680 /* GameCardView.swift in Sources */,
@@ -240,6 +259,7 @@
 				CAF19E0826927B20006028C7 /* TabBarIconView.swift in Sources */,
 				CAF19E1326929808006028C7 /* TabBarIconViewModel.swift in Sources */,
 				CADEFB542692D510002DB680 /* AllHistoryView.swift in Sources */,
+				CADEFB6126938B9D002DB680 /* AudioController.swift in Sources */,
 				CAF19E172692C7EE006028C7 /* AllCardsView.swift in Sources */,
 				CAF19E1126929362006028C7 /* TabViewModel.swift in Sources */,
 				CADEFB5A2692DE1E002DB680 /* GameView.swift in Sources */,

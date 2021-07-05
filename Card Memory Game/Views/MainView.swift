@@ -4,6 +4,7 @@ import SwiftUI
 
 struct MainView: View {
     @StateObject var tabViewModel = TabViewModel()
+    @StateObject var audioController = AudioController()
     
     var body: some View {
         ZStack (alignment: .bottomTrailing) {
@@ -45,6 +46,7 @@ struct MainView: View {
                 .padding()
         }
         .environmentObject(tabViewModel)
+        .environmentObject(audioController)
     }
 }
 

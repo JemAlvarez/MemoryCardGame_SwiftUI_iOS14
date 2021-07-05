@@ -11,6 +11,7 @@ struct TabBarIconView: View {
     @State var animating = false
     @State var angle: Double = 0
     
+    @EnvironmentObject var audioController: AudioController
     @ObservedObject var viewModel = TabBarIconViewModel()
     
     var body: some View {
@@ -25,6 +26,7 @@ struct TabBarIconView: View {
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .center)
         .onTapGesture {
+            audioController.playSound(sound: "cursor_style_1", type: "wav")
             withAnimation {
                 if selectedTab > tag {
                     angle = -25
