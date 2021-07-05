@@ -11,6 +11,8 @@
 		CAA693F42691632500E6E0A6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CAA693F32691632500E6E0A6 /* Assets.xcassets */; };
 		CAA693F72691632500E6E0A6 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CAA693F62691632500E6E0A6 /* Preview Assets.xcassets */; };
 		CAA694002691642300E6E0A6 /* TabBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAA693FF2691642300E6E0A6 /* TabBarView.swift */; };
+		CADEFB522692D007002DB680 /* HistoryCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CADEFB512692D007002DB680 /* HistoryCardView.swift */; };
+		CADEFB542692D510002DB680 /* AllHistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CADEFB532692D510002DB680 /* AllHistoryView.swift */; };
 		CAF19E0826927B20006028C7 /* TabBarIconView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF19E0726927B20006028C7 /* TabBarIconView.swift */; };
 		CAF19E0D269292C8006028C7 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF19E0C269292C8006028C7 /* MainView.swift */; };
 		CAF19E1126929362006028C7 /* TabViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF19E1026929362006028C7 /* TabViewModel.swift */; };
@@ -27,6 +29,8 @@
 		CAA693F62691632500E6E0A6 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		CAA693F82691632500E6E0A6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CAA693FF2691642300E6E0A6 /* TabBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarView.swift; sourceTree = "<group>"; };
+		CADEFB512692D007002DB680 /* HistoryCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryCardView.swift; sourceTree = "<group>"; };
+		CADEFB532692D510002DB680 /* AllHistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllHistoryView.swift; sourceTree = "<group>"; };
 		CAF19E0726927B20006028C7 /* TabBarIconView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarIconView.swift; sourceTree = "<group>"; };
 		CAF19E0C269292C8006028C7 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		CAF19E1026929362006028C7 /* TabViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabViewModel.swift; sourceTree = "<group>"; };
@@ -89,13 +93,31 @@
 		CAA693FE2691641200E6E0A6 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				CAA693FF2691642300E6E0A6 /* TabBarView.swift */,
-				CAF19E0726927B20006028C7 /* TabBarIconView.swift */,
+				CADEFB572692DC93002DB680 /* History */,
+				CADEFB582692DCA8002DB680 /* TabBar */,
 				CAF19E0C269292C8006028C7 /* MainView.swift */,
-				CAF19E142692A2BB006028C7 /* FloatingButtonView.swift */,
 				CAF19E162692C7EE006028C7 /* AllCardsView.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		CADEFB572692DC93002DB680 /* History */ = {
+			isa = PBXGroup;
+			children = (
+				CADEFB512692D007002DB680 /* HistoryCardView.swift */,
+				CADEFB532692D510002DB680 /* AllHistoryView.swift */,
+			);
+			path = History;
+			sourceTree = "<group>";
+		};
+		CADEFB582692DCA8002DB680 /* TabBar */ = {
+			isa = PBXGroup;
+			children = (
+				CAF19E142692A2BB006028C7 /* FloatingButtonView.swift */,
+				CAA693FF2691642300E6E0A6 /* TabBarView.swift */,
+				CAF19E0726927B20006028C7 /* TabBarIconView.swift */,
+			);
+			path = TabBar;
 			sourceTree = "<group>";
 		};
 		CAF19E092692926F006028C7 /* Shared */ = {
@@ -193,10 +215,12 @@
 			files = (
 				CAA694002691642300E6E0A6 /* TabBarView.swift in Sources */,
 				CAA693F02691632500E6E0A6 /* Card_Memory_GameApp.swift in Sources */,
+				CADEFB522692D007002DB680 /* HistoryCardView.swift in Sources */,
 				CAF19E0D269292C8006028C7 /* MainView.swift in Sources */,
 				CAF19E152692A2BB006028C7 /* FloatingButtonView.swift in Sources */,
 				CAF19E0826927B20006028C7 /* TabBarIconView.swift in Sources */,
 				CAF19E1326929808006028C7 /* TabBarIconViewModel.swift in Sources */,
+				CADEFB542692D510002DB680 /* AllHistoryView.swift in Sources */,
 				CAF19E172692C7EE006028C7 /* AllCardsView.swift in Sources */,
 				CAF19E1126929362006028C7 /* TabViewModel.swift in Sources */,
 				CAF19E192692C832006028C7 /* Constants.swift in Sources */,

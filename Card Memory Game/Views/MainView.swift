@@ -19,11 +19,8 @@ struct MainView: View {
                     .frame(width: UIScreen.main.bounds.width)
                     .frame(maxHeight: .infinity)
                     
-                    VStack {
-                        Text("2")
-                    }
+                    AllHistoryView()
                     .frame(width: UIScreen.main.bounds.width)
-                    .frame(maxHeight: .infinity)
                     .offset(x: UIScreen.main.bounds.width)
                     
                     AllCardsView()
