@@ -25,6 +25,7 @@ struct FloatingButtonView: View {
                 .offset(x: showingButtons ? -80 : 0)
                 .onTapGesture {
                     audioController.playUISFX(sound: "cursor_style_1", type: "wav")
+                    audioController.playBackgroundMusic(sound: "game", type: "wav")
                     showingGameSheet.toggle()
                 }
             
@@ -36,6 +37,7 @@ struct FloatingButtonView: View {
                 .offset(y: showingButtons ? -80 : 0)
                 .onTapGesture {
                     audioController.playUISFX(sound: "cursor_style_1", type: "wav")
+                    audioController.playBackgroundMusic(sound: "game", type: "wav")
                     showingGameSheet.toggle()
                 }
             
@@ -47,6 +49,7 @@ struct FloatingButtonView: View {
                 .offset(x: showingButtons ? -80 : 0, y: showingButtons ? -80 : 0)
                 .onTapGesture {
                     audioController.playUISFX(sound: "cursor_style_1", type: "wav")
+                    audioController.playBackgroundMusic(sound: "game", type: "wav")
                     showingGameSheet.toggle()
                 }
             

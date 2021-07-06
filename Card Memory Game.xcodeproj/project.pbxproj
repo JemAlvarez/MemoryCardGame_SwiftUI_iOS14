@@ -19,6 +19,8 @@
 		CADEFB6126938B9D002DB680 /* AudioController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CADEFB6026938B9C002DB680 /* AudioController.swift */; };
 		CADEFB6626938F02002DB680 /* cursor_style_1.wav in Resources */ = {isa = PBXBuildFile; fileRef = CADEFB6526938F02002DB680 /* cursor_style_1.wav */; };
 		CADEFB682693C7D6002DB680 /* HistoryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CADEFB672693C7D6002DB680 /* HistoryModel.swift */; };
+		CADEFB6C2693D4FF002DB680 /* bg.wav in Resources */ = {isa = PBXBuildFile; fileRef = CADEFB6B2693D4FF002DB680 /* bg.wav */; };
+		CADEFB6E2693E95B002DB680 /* game.wav in Resources */ = {isa = PBXBuildFile; fileRef = CADEFB6D2693E95B002DB680 /* game.wav */; };
 		CAF19E0826927B20006028C7 /* TabBarIconView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF19E0726927B20006028C7 /* TabBarIconView.swift */; };
 		CAF19E0D269292C8006028C7 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF19E0C269292C8006028C7 /* MainView.swift */; };
 		CAF19E1126929362006028C7 /* TabViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF19E1026929362006028C7 /* TabViewModel.swift */; };
@@ -43,6 +45,8 @@
 		CADEFB6026938B9C002DB680 /* AudioController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioController.swift; sourceTree = "<group>"; };
 		CADEFB6526938F02002DB680 /* cursor_style_1.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = cursor_style_1.wav; sourceTree = "<group>"; };
 		CADEFB672693C7D6002DB680 /* HistoryModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryModel.swift; sourceTree = "<group>"; };
+		CADEFB6B2693D4FF002DB680 /* bg.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = bg.wav; sourceTree = "<group>"; };
+		CADEFB6D2693E95B002DB680 /* game.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = game.wav; sourceTree = "<group>"; };
 		CAF19E0726927B20006028C7 /* TabBarIconView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarIconView.swift; sourceTree = "<group>"; };
 		CAF19E0C269292C8006028C7 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		CAF19E1026929362006028C7 /* TabViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabViewModel.swift; sourceTree = "<group>"; };
@@ -147,6 +151,8 @@
 			isa = PBXGroup;
 			children = (
 				CADEFB6526938F02002DB680 /* cursor_style_1.wav */,
+				CADEFB6D2693E95B002DB680 /* game.wav */,
+				CADEFB6B2693D4FF002DB680 /* bg.wav */,
 			);
 			path = Sounds;
 			sourceTree = "<group>";
@@ -235,9 +241,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CADEFB6E2693E95B002DB680 /* game.wav in Resources */,
 				CADEFB6626938F02002DB680 /* cursor_style_1.wav in Resources */,
 				CAA693F72691632500E6E0A6 /* Preview Assets.xcassets in Resources */,
 				CAA693F42691632500E6E0A6 /* Assets.xcassets in Resources */,
+				CADEFB6C2693D4FF002DB680 /* bg.wav in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

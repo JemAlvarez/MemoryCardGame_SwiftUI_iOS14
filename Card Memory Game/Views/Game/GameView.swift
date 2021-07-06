@@ -27,6 +27,7 @@ struct GameView: View {
                     Spacer()
                     Button(action: {
                         audioController.playUISFX(sound: "cursor_style_1", type: "wav")
+                        audioController.playBackgroundMusic(sound: "bg", type: "wav")
                         presentationMode.wrappedValue.dismiss()
                     }) {
                         Image(systemName: "xmark.circle.fill")

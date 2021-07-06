@@ -1,6 +1,7 @@
 //
 
 import SwiftUI
+import AVFoundation
 
 struct MainView: View {
     @StateObject var tabViewModel = TabViewModel()
@@ -31,6 +32,15 @@ struct MainView: View {
                 .offset(y: -80)
                 .padding()
         }
+        .onAppear {
+            audioController.playBackgroundMusic(sound: "bg", type: "wav")
+        }
+        .onReceive(NotificationCenter.default.publisher(for: UIApplication.willResignActiveNotification)) { _ in
+            audioController.backgroundPlayer?.pause()
+            }
+        .onReceive(NotificationCenter.default.publisher(for: UIApplication.willEnterForegroundNotification)) { _ in
+            audioController.backgroundPlayer?.play()
+            }
         .environmentObject(tabViewModel)
         .environmentObject(audioController)
     }
