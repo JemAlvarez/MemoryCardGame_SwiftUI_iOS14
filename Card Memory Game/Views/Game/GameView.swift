@@ -5,12 +5,9 @@ import SwiftUI
 struct GameView: View {
     @Environment(\.presentationMode) var presentationMode
     @EnvironmentObject var audioController: AudioController
+    @ObservedObject var gameController: GameController
     
-    @State var tempCards = [
-        GameCardModel(image: "01", flipped: false), GameCardModel(image: "01", flipped: false), GameCardModel(image: "01", flipped: false), GameCardModel(image: "01", flipped: false), GameCardModel(image: "01", flipped: false), GameCardModel(image: "01", flipped: false), GameCardModel(image: "01", flipped: false), GameCardModel(image: "01", flipped: false), GameCardModel(image: "01", flipped: false), GameCardModel(image: "01", flipped: false), GameCardModel(image: "01", flipped: false), GameCardModel(image: "01", flipped: false), GameCardModel(image: "01", flipped: false), GameCardModel(image: "01", flipped: false), GameCardModel(image: "01", flipped: false), GameCardModel(image: "01", flipped: false), GameCardModel(image: "01", flipped: false), GameCardModel(image: "01", flipped: false), GameCardModel(image: "01", flipped: false), GameCardModel(image: "01", flipped: false), GameCardModel(image: "01", flipped: false), GameCardModel(image: "01", flipped: false), GameCardModel(image: "01", flipped: false), GameCardModel(image: "01", flipped: false), GameCardModel(image: "01", flipped: false), GameCardModel(image: "01", flipped: false), GameCardModel(image: "01", flipped: false), GameCardModel(image: "01", flipped: false), GameCardModel(image: "01", flipped: false), GameCardModel(image: "01", flipped: false), GameCardModel(image: "01", flipped: false), GameCardModel(image: "01", flipped: false), GameCardModel(image: "01", flipped: false), GameCardModel(image: "01", flipped: false), GameCardModel(image: "01", flipped: false),
-    ]
-    
-    let columns = [GridItem(), GridItem(), GridItem(), GridItem(), GridItem()]
+    let columns = [GridItem(), GridItem(), GridItem(), GridItem()]
     @State var card1: GameCardModel?
     @State var card2: GameCardModel?
     
@@ -22,8 +19,6 @@ struct GameView: View {
                 Spacer()
                 
                 HStack {
-                    Label("Best Time:", systemImage: "hourglass")
-                    Text("00:21 s")
                     Spacer()
                     Button(action: {
                         audioController.playUISFX(sound: "cursor_style_1", type: "wav")
@@ -35,16 +30,20 @@ struct GameView: View {
                             .font(.system(size: 25))
                     }
                 }
+                .padding(.bottom)
+                
+                HStack {
+                    Label("Best Time:", systemImage: "hourglass")
+                    Text("00:21 s")
+                    Spacer()
+                    Text("Difficulty:")
+                    Image(systemName: "exclamationmark.\(gameController.difficulty == 1 ? "" : "\(gameController.difficulty)")")
+                }
                 
                 Divider()
                     .background(Color("greenLight"))
                 
                 HStack {
-                    Text("Difficulty:")
-                    Image(systemName: "exclamationmark.3")
-                    
-                    Spacer()
-                    
                     Text("Lives:")
                     HStack (spacing: 0) {
                         Image(systemName: "heart.fill")
@@ -81,27 +80,27 @@ struct GameView: View {
                     .background(Color("greenLight"))
                 
                 LazyVGrid(columns: columns, spacing: 10) {
-                    ForEach(0..<tempCards.count) { i in
-                        GameCardView(card: tempCards[i], isFlipped: $tempCards[i].flipped)
+                    ForEach(0..<gameController.cards.count) { i in
+                        GameCardView(card: gameController.cards[i], isFlipped: $gameController.cards[i].flipped)
                             .frame(height: 70)
                             .onTapGesture {
                                 if card1 == nil || card2 == nil {
                                     withAnimation {
-                                        tempCards[i].flipped = true
+                                        gameController.cards[i].flipped = true
                                     }
                                     
                                     if card1 == nil {
                                         audioController.playUISFX(sound: "cursor_style_1", type: "wav")
-                                        card1 = tempCards[i]
+                                        card1 = gameController.cards[i]
                                     } else if card1 != nil && card2 == nil {
-                                        if tempCards[i].id.uuidString != card1!.id.uuidString {
+                                        if gameController.cards[i].id.uuidString != card1!.id.uuidString {
                                             audioController.playUISFX(sound: "cursor_style_1", type: "wav")
-                                            card2 = tempCards[i]
+                                            card2 = gameController.cards[i]
 
                                             DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-                                                for i in 0..<tempCards.count {
+                                                for i in 0..<gameController.cards.count {
                                                     withAnimation {
-                                                        tempCards[i].flipped = false
+                                                        gameController.cards[i].flipped = false
                                                     }
                                                 }
                                                 
@@ -125,6 +124,6 @@ struct GameView: View {
 
 struct GameView_Previews: PreviewProvider {
     static var previews: some View {
-        GameView()
+        GameView(gameController: GameController(difficulty: 1))
     }
 }

@@ -15,6 +15,8 @@ struct FloatingButtonView: View {
         }
     }
     
+    @State var gameController: GameController?
+    
     var body: some View {
         ZStack {
             Image(systemName: "exclamationmark")
@@ -26,6 +28,7 @@ struct FloatingButtonView: View {
                 .onTapGesture {
                     audioController.playUISFX(sound: "cursor_style_1", type: "wav")
                     audioController.playBackgroundMusic(sound: "game", type: "wav")
+                    gameController = GameController(difficulty: 1)
                     showingGameSheet.toggle()
                 }
             
@@ -38,6 +41,7 @@ struct FloatingButtonView: View {
                 .onTapGesture {
                     audioController.playUISFX(sound: "cursor_style_1", type: "wav")
                     audioController.playBackgroundMusic(sound: "game", type: "wav")
+                    gameController = GameController(difficulty: 3)
                     showingGameSheet.toggle()
                 }
             
@@ -50,6 +54,7 @@ struct FloatingButtonView: View {
                 .onTapGesture {
                     audioController.playUISFX(sound: "cursor_style_1", type: "wav")
                     audioController.playBackgroundMusic(sound: "game", type: "wav")
+                    gameController = GameController(difficulty: 2)
                     showingGameSheet.toggle()
                 }
             
@@ -65,7 +70,7 @@ struct FloatingButtonView: View {
                     }
                 }
         }
-        .fullScreenCover(isPresented: $showingGameSheet) { GameView() }
+        .fullScreenCover(isPresented: $showingGameSheet) { GameView(gameController: gameController ?? GameController(difficulty: 1)) }
     }
 }
 
