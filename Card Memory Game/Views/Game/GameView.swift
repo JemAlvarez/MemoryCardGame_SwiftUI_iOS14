@@ -4,6 +4,7 @@ import SwiftUI
 
 struct GameView: View {
     @Environment(\.presentationMode) var presentationMode
+    @EnvironmentObject var audioController: AudioController
     
     @State var tempCards = [
         GameCardModel(image: "01", flipped: false), GameCardModel(image: "01", flipped: false), GameCardModel(image: "01", flipped: false), GameCardModel(image: "01", flipped: false), GameCardModel(image: "01", flipped: false), GameCardModel(image: "01", flipped: false), GameCardModel(image: "01", flipped: false), GameCardModel(image: "01", flipped: false), GameCardModel(image: "01", flipped: false), GameCardModel(image: "01", flipped: false), GameCardModel(image: "01", flipped: false), GameCardModel(image: "01", flipped: false), GameCardModel(image: "01", flipped: false), GameCardModel(image: "01", flipped: false), GameCardModel(image: "01", flipped: false), GameCardModel(image: "01", flipped: false), GameCardModel(image: "01", flipped: false), GameCardModel(image: "01", flipped: false), GameCardModel(image: "01", flipped: false), GameCardModel(image: "01", flipped: false), GameCardModel(image: "01", flipped: false), GameCardModel(image: "01", flipped: false), GameCardModel(image: "01", flipped: false), GameCardModel(image: "01", flipped: false), GameCardModel(image: "01", flipped: false), GameCardModel(image: "01", flipped: false), GameCardModel(image: "01", flipped: false), GameCardModel(image: "01", flipped: false), GameCardModel(image: "01", flipped: false), GameCardModel(image: "01", flipped: false), GameCardModel(image: "01", flipped: false), GameCardModel(image: "01", flipped: false), GameCardModel(image: "01", flipped: false), GameCardModel(image: "01", flipped: false), GameCardModel(image: "01", flipped: false),
@@ -25,6 +26,7 @@ struct GameView: View {
                     Text("00:21 s")
                     Spacer()
                     Button(action: {
+                        audioController.playUISFX(sound: "cursor_style_1", type: "wav")
                         presentationMode.wrappedValue.dismiss()
                     }) {
                         Image(systemName: "xmark.circle.fill")
@@ -88,19 +90,23 @@ struct GameView: View {
                                     }
                                     
                                     if card1 == nil {
+                                        audioController.playUISFX(sound: "cursor_style_1", type: "wav")
                                         card1 = tempCards[i]
                                     } else if card1 != nil && card2 == nil {
-                                        card2 = tempCards[i]
+                                        if tempCards[i].id.uuidString != card1!.id.uuidString {
+                                            audioController.playUISFX(sound: "cursor_style_1", type: "wav")
+                                            card2 = tempCards[i]
 
-                                        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-                                            for i in 0..<tempCards.count {
-                                                withAnimation {
-                                                    tempCards[i].flipped = false
+                                            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                                                for i in 0..<tempCards.count {
+                                                    withAnimation {
+                                                        tempCards[i].flipped = false
+                                                    }
                                                 }
+                                                
+                                                card1 = nil
+                                                card2 = nil
                                             }
-                                            
-                                            card1 = nil
-                                            card2 = nil
                                         }
                                     }
                                 }
@@ -112,9 +118,6 @@ struct GameView: View {
                 Spacer()
             }
             .padding()
-        }
-        .onDisappear {
-            print("DISAPPEARED")
         }
     }
 }

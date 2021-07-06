@@ -3,21 +3,33 @@
 import AVFoundation
 
 class AudioController: ObservableObject {
-    var audioPlayer: AVAudioPlayer?
+    var uiSFXPlayer: AVAudioPlayer?
+    var backgroundPlayer: AVAudioPlayer?
     
-    func setLoopNumber (_ num: Int) {
-        if let _ = audioPlayer {
-            audioPlayer!.numberOfLoops = num
+    func setLoopNumber (_ num: Int, player: AVAudioPlayer?) {
+        if let _ = player {
+            player!.numberOfLoops = num
         }
     }
 
-    func playSound(sound: String, type: String) {
+    func playBackgroundMusic(sound: String, type: String) {
         if let path = Bundle.main.path(forResource: sound, ofType: type) {
             do {
-                audioPlayer = try AVAudioPlayer(contentsOf: URL(fileURLWithPath: path))
-                audioPlayer?.play()
+                backgroundPlayer = try AVAudioPlayer(contentsOf: URL(fileURLWithPath: path))
+                backgroundPlayer?.play()
             } catch {
-                print("ERROR")
+                print("BACKGROUND MUSIC ERROR")
+            }
+        }
+    }
+    
+    func playUISFX(sound: String, type: String) {
+        if let path = Bundle.main.path(forResource: sound, ofType: type) {
+            do {
+                uiSFXPlayer = try AVAudioPlayer(contentsOf: URL(fileURLWithPath: path))
+                uiSFXPlayer?.play()
+            } catch {
+                print("SFX AUDIO ERROR")
             }
         }
     }

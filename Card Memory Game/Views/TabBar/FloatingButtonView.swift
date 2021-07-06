@@ -3,6 +3,7 @@
 import SwiftUI
 
 struct FloatingButtonView: View {
+    @EnvironmentObject var audioController: AudioController
     @State var showingButtons = false
     @State var showingGameSheet = false {
         didSet {
@@ -23,6 +24,7 @@ struct FloatingButtonView: View {
                 .clipShape(Circle())
                 .offset(x: showingButtons ? -80 : 0)
                 .onTapGesture {
+                    audioController.playUISFX(sound: "cursor_style_1", type: "wav")
                     showingGameSheet.toggle()
                 }
             
@@ -33,6 +35,7 @@ struct FloatingButtonView: View {
                 .clipShape(Circle())
                 .offset(y: showingButtons ? -80 : 0)
                 .onTapGesture {
+                    audioController.playUISFX(sound: "cursor_style_1", type: "wav")
                     showingGameSheet.toggle()
                 }
             
@@ -43,6 +46,7 @@ struct FloatingButtonView: View {
                 .clipShape(Circle())
                 .offset(x: showingButtons ? -80 : 0, y: showingButtons ? -80 : 0)
                 .onTapGesture {
+                    audioController.playUISFX(sound: "cursor_style_1", type: "wav")
                     showingGameSheet.toggle()
                 }
             
@@ -52,6 +56,7 @@ struct FloatingButtonView: View {
                 .background(Color("black"))
                 .clipShape(Circle())
                 .onTapGesture {
+                    audioController.playUISFX(sound: "cursor_style_1", type: "wav")
                     withAnimation {
                         showingButtons.toggle()
                     }
