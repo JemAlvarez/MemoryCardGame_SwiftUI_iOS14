@@ -28,41 +28,47 @@ class GameController: ObservableObject {
             for _ in 0..<6 {
                 var newNumber = Int(arc4random_uniform(78))
                 
-                while randomNumbers.contains(newNumber) {
+                while newNumber == 0 || randomNumbers.contains(newNumber) {
                     newNumber = Int(arc4random_uniform(78))
                 }
                 
                 randomNumbers.append(newNumber)
                 
-                let newCard = GameCardModel(image: "\(newNumber)", flipped: false)
+                let newCard = GameCardModel(image: newNumber < 10 ? "0\(newNumber)" : "\(newNumber)", flipped: false, correct: false)
                 cardsArray.append(newCard)
             }
             
-            let copyArray = cardsArray
-            cardsArray += copyArray
+            var secondHalf: [GameCardModel] = []
+            for card in cardsArray {
+                secondHalf.append(GameCardModel(image: card.image, flipped: false, correct: false))
+            }
+            cardsArray += secondHalf
             cardsArray.shuffle()
             self.cards = cardsArray
         } else if difficulty == 2 {
             // lives
-            self.lives = 15
+            self.lives = 16
             // time
             self.timer = 120
             // cards
             for _ in 0..<10 {
                 var newNumber = Int(arc4random_uniform(78))
                 
-                while randomNumbers.contains(newNumber) {
+                while newNumber == 0 || randomNumbers.contains(newNumber) {
                     newNumber = Int(arc4random_uniform(78))
                 }
                 
                 randomNumbers.append(newNumber)
                 
-                let newCard = GameCardModel(image: "\(newNumber)", flipped: false)
+                let newCard = GameCardModel(image: newNumber < 10 ? "0\(newNumber)" : "\(newNumber)", flipped: false, correct: false)
                 cardsArray.append(newCard)
             }
             
-            let copyArray = cardsArray
-            cardsArray += copyArray
+            var secondHalf: [GameCardModel] = []
+            for card in cardsArray {
+                secondHalf.append(GameCardModel(image: card.image, flipped: false, correct: false))
+            }
+            cardsArray += secondHalf
             cardsArray.shuffle()
             self.cards = cardsArray
         } else if difficulty == 3 {
@@ -74,18 +80,21 @@ class GameController: ObservableObject {
             for _ in 0..<14 {
                 var newNumber = Int(arc4random_uniform(78))
                 
-                while randomNumbers.contains(newNumber) {
+                while newNumber == 0 || randomNumbers.contains(newNumber) {
                     newNumber = Int(arc4random_uniform(78))
                 }
                 
                 randomNumbers.append(newNumber)
                 
-                let newCard = GameCardModel(image: "\(newNumber)", flipped: false)
+                let newCard = GameCardModel(image: newNumber < 10 ? "0\(newNumber)" : "\(newNumber)", flipped: false, correct: false)
                 cardsArray.append(newCard)
             }
             
-            let copyArray = cardsArray
-            cardsArray += copyArray
+            var secondHalf: [GameCardModel] = []
+            for card in cardsArray {
+                secondHalf.append(GameCardModel(image: card.image, flipped: false, correct: false))
+            }
+            cardsArray += secondHalf
             cardsArray.shuffle()
             self.cards = cardsArray
         } else {
@@ -97,7 +106,7 @@ class GameController: ObservableObject {
     
     // methods
     // check if two cards match
-    func checkCardMathc(card1: GameCardModel, card2: GameCardModel) -> Bool {
+    func checkCardMatch(card1: GameCardModel, card2: GameCardModel) -> Bool {
         if card1.image == card2.image {
             return true
         }
@@ -117,8 +126,6 @@ class GameController: ObservableObject {
         if allCardsMatch {
             win = true
         } else if lives == 0 {
-            win = false
-        } else if timer == 0 {
             win = false
         }
     }

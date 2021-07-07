@@ -34,6 +34,6 @@ struct GameCardView: View {
 
 struct GameCardView_Previews: PreviewProvider {
     static var previews: some View {
-        GameCardView(card: GameCardModel(image: "01", flipped: false), isFlipped: .constant(false))
+        GameCardView(card: GameCardModel(image: "01", flipped: false, correct: false), isFlipped: .constant(false))
     }
 }

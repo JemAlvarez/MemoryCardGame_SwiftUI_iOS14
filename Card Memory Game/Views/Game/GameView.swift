@@ -10,6 +10,7 @@ struct GameView: View {
     let columns = [GridItem(), GridItem(), GridItem(), GridItem()]
     @State var card1: GameCardModel?
     @State var card2: GameCardModel?
+    let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
     
     var body: some View {
         ZStack {
@@ -37,7 +38,7 @@ struct GameView: View {
                     Text("00:21 s")
                     Spacer()
                     Text("Difficulty:")
-                    Image(systemName: "exclamationmark.\(gameController.difficulty == 1 ? "" : "\(gameController.difficulty)")")
+                    Image(systemName: "exclamationmark\(gameController.difficulty == 1 ? "" : ".\(gameController.difficulty)")")
                 }
                 
                 Divider()
@@ -45,17 +46,20 @@ struct GameView: View {
                 
                 HStack {
                     Text("Lives:")
-                    HStack (spacing: 0) {
-                        Image(systemName: "heart.fill")
-                        Image(systemName: "heart.fill")
-                        Image(systemName: "heart.fill")
-                        Image(systemName: "heart.fill")
-                        Image(systemName: "heart.fill")
-                        Image(systemName: "heart.fill")
-                        Image(systemName: "heart.fill")
-                        Image(systemName: "heart.fill")
-                        Image(systemName: "heart.fill")
-                        Image(systemName: "heart.fill")
+                    LazyHGrid (rows: [GridItem(), GridItem()],spacing: 0) {
+                        if gameController.difficulty == 1 {
+                            ForEach(0..<20) { i in
+                                Image(systemName: "heart\(i < gameController.lives ? ".fill" : "")")
+                            }
+                        } else if gameController.difficulty == 2 {
+                            ForEach(0..<15) { i in
+                                Image(systemName: "heart\(i < gameController.lives ? ".fill" : "")")
+                            }
+                        } else if gameController.difficulty == 3 {
+                            ForEach(0..<10) { i in
+                                Image(systemName: "heart\(i < gameController.lives ? ".fill" : "")")
+                            }
+                        }
                     }
                 }
                 
@@ -66,12 +70,12 @@ struct GameView: View {
                     Spacer()
                     
                     Label("Moves:", systemImage: "arrow.counterclockwise")
-                    Text("0")
+                    Text("\(gameController.moves)")
                     
                     Spacer()
                     
                     Label("Timer:", systemImage: "clock")
-                    Text("00:30 s")
+                    Text("\((gameController.timer % 3600) / 60):\((gameController.timer % 3600) % 60) s")
                     
                     Spacer()
                 }
@@ -84,28 +88,45 @@ struct GameView: View {
                         GameCardView(card: gameController.cards[i], isFlipped: $gameController.cards[i].flipped)
                             .frame(height: 70)
                             .onTapGesture {
-                                if card1 == nil || card2 == nil {
+                                if card1 == nil || card2 == nil { // if one card missing selected
                                     withAnimation {
-                                        gameController.cards[i].flipped = true
+                                        gameController.cards[i].flipped = true // flipp card
                                     }
                                     
-                                    if card1 == nil {
-                                        audioController.playUISFX(sound: "cursor_style_1", type: "wav")
-                                        card1 = gameController.cards[i]
-                                    } else if card1 != nil && card2 == nil {
-                                        if gameController.cards[i].id.uuidString != card1!.id.uuidString {
-                                            audioController.playUISFX(sound: "cursor_style_1", type: "wav")
-                                            card2 = gameController.cards[i]
+                                    if card1 == nil { // if card one not selected
+                                        audioController.playUISFX(sound: "cursor_style_1", type: "wav") // play sound
+                                        card1 = gameController.cards[i] // select first card
+                                    } else if card1 != nil && card2 == nil { // if second card not selected (but first is )
+                                        if gameController.cards[i].id.uuidString != card1!.id.uuidString { // if not tapping the same card
+                                            audioController.playUISFX(sound: "cursor_style_1", type: "wav") // play sound
+                                            card2 = gameController.cards[i] // select second card
+                                            gameController.moves += 1 // add one move
 
-                                            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-                                                for i in 0..<gameController.cards.count {
-                                                    withAnimation {
-                                                        gameController.cards[i].flipped = false
+                                            if gameController.checkCardMatch(card1: card1!, card2: card2!) { // if card match
+                                                for j in 0..<gameController.cards.count {
+                                                    if gameController.cards[j].image == card1!.image {
+                                                        gameController.cards[j].correct = true
                                                     }
                                                 }
-                                                
+                                                // reset and move on
                                                 card1 = nil
                                                 card2 = nil
+                                            } else { // if no match
+                                                gameController.lives -= 1
+                                                
+                                                DispatchQueue.main.asyncAfter(deadline: .now() + 1) { // wait one second
+                                                    for i in 0..<gameController.cards.count { // turn back all cards
+                                                        if !gameController.cards[i].correct { // if its not a correct card
+                                                            withAnimation {
+                                                                gameController.cards[i].flipped = false // flip
+                                                            }
+                                                        }
+                                                    }
+                                                    
+                                                    // reset cards
+                                                    card1 = nil
+                                                    card2 = nil
+                                                }
                                             }
                                         }
                                     }
@@ -118,6 +139,43 @@ struct GameView: View {
                 Spacer()
             }
             .padding()
+            .blur(radius: gameController.win != nil ? 10 : 0)
+            
+            if gameController.win != nil {
+                VStack {
+                    Text("GAME OVER, you \(gameController.win! ? "win" : "lose")")
+                    
+                    Button(action: {
+                        audioController.playUISFX(sound: "cursor_style_1", type: "wav")
+                        audioController.playBackgroundMusic(sound: "bg", type: "wav")
+                        presentationMode.wrappedValue.dismiss()
+                    }) {
+                        Text("Exit")
+                    }
+                    .padding()
+                    .background(Color.blue)
+                    .cornerRadius(3)
+                    .padding()
+                }
+                .frame(maxWidth: .infinity, maxHeight: .infinity)
+                .background(gameController.win! ? Color.green.opacity(0.5) : Color.red.opacity(0.5))
+                .edgesIgnoringSafeArea(.all)
+            }
+        }
+        .onReceive(timer) { time in
+            if gameController.timer > 0 {
+                gameController.gameOver()
+                
+                if gameController.win != nil {
+                    if gameController.win! {
+                        timer.upstream.connect().cancel()
+                    }
+                }
+                
+                gameController.timer -= 1
+            } else if gameController.timer == 0 {
+                gameController.win = false
+            }
         }
     }
 }
